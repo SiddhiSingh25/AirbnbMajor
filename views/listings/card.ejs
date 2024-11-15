@@ -131,12 +131,12 @@
 
                         <div class="flex items-center mb-2">
                           <a href="/listings/<%=data._id%>/hostProfile">
-                            <% if ( data.owner.userImage && data.owner.userImage.url) { %>
-                              <img src="<%=  data.owner.userImage.url %>" alt="Profile"
+                            <% if ( item.author.userImage && item.author.userImage.url) { %>
+                              <img src="<%= item.author.userImage.url %>" alt="Profile"
                                 class="w-12 h-12 rounded-full mr-4 object-cover object-center">
                               <% } else { %>
                                 <div class="w-12 h-12 text-2xl rounded-full mr-4 border">
-                                  <%=userDetails.username.slice(0,1) %>
+                                  <%=item.author.username.slice(0,1) %>
                                 </div>
                                 <% } %>
                           </a>
@@ -151,7 +151,7 @@
                         </div>
 
                         <div class="flex items-center mb-2">
-                          <p class="starability-result card-text" data-rating="3" ></p>
+                          <p class="starability-result small-star" data-rating=<%=item.rating%> ></p>
                           <!-- <span class="text-yellow-400">&#9733;&#9733;&#9733;&#9733;&#9733;</span> -->
                           <span class="ml-2 text-gray-500 text-sm">
                             <%= item.daysAgo %> days ago

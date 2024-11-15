@@ -78,26 +78,22 @@
         <form action="/listings/<%= data._id %>/reviews" method="post" novalidate class="needs-validation">
           <h2 class="text-3xl font-semibold mb-3">Leave a comment</h2>
 
-          <!-- <div class="mb-4">
+          <div class="mb-4">
             <label for="rating" class="block text-2xl font-medium text-gray-700">Rating (1-5):</label>
-            <input type="range" name="review[rating]" id="rating" min="1" max="5" required class="w-full mt-2 text-xl">
-          </div>
-           -->
+          
           <fieldset class="starability-grow">
-            <legend>First rating:</legend>
             <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" min="1" max="5" value="0" checked aria-label="No rating."  required class="w-full mt-2 text-xl"/>
-            <input type="radio" id="first-rate1" name="rating" value="1" />
+            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
             <label for="first-rate1" title="Terrible">1 star</label>
-            <input type="radio" id="first-rate2" name="rating" value="2" />
+            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
             <label for="first-rate2" title="Not good">2 stars</label>
-            <input type="radio" id="first-rate3" name="rating" value="3" />
+            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
             <label for="first-rate3" title="Average">3 stars</label>
-            <input type="radio" id="first-rate4" name="rating" value="4" />
+            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
             <label for="first-rate4" title="Very good">4 stars</label>
-            <input type="radio" id="first-rate5" name="rating" value="5" />
+            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
             <label for="first-rate5" title="Amazing">5 stars</label>
-          </fieldset>
-
+          </fieldset></div>
           <div class="mb-4 ">
             <label for="comment" class="block text-xl font-medium text-gray-700">Comment:</label>
             <textarea name="review[comment]" id="comment" rows="4" required

@@ -134,8 +134,8 @@
                               <img src="<%= item.author.userImage.url %>" alt="Profile"
                                 class="w-12 h-12 rounded-full mr-4 object-cover object-center">
                               <% } else { %>
-                                <div class="w-12 h-12 text-2xl rounded-full mr-4 border">
-                                  <%=item.author.username.slice(0,1) %>
+                                <div class="w-12 h-12 text-2xl flex items-center justify-center rounded-full mr-4 border ">
+                                 <p> <%=item.author.username.slice(0,1) %></p>
                                 </div>
                                 <% } %>
                           </a>

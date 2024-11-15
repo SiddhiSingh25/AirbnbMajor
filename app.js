@@ -94,17 +94,17 @@ app.use((req, res, next) => {
     res.locals.success = req.flash("success")
     res.locals.error = req.flash("error")
     res.locals.currUser = req.user;
-    next()
+    next();
 })
 
-app.use((req, res, next) => {
-    if (req.isAuthenticated()) {
-        res.locals.currUser = req.user;  
-    } else {
-        res.locals.currUser = null;  
-    }
-    next();
-});
+// app.use((req, res, next) => {
+//     if (req.isAuthenticated()) {
+//         res.locals.currUser = req.user;  
+//     } else {
+//         res.locals.currUser = null;  
+//     }
+//     next();
+// });
 
 
 app.use("/listings", listingRoute)

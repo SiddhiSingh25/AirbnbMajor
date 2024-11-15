@@ -10,6 +10,7 @@
         <img src="<%= data.image.url %>" alt="Main Image" class="w-full h-full object-cover rounded-lg">
       </div>
       <!-- Listing Info -->
+      <%=currUser%>
       <div class="mb-2 px-2">
         <div class="flex items-center justify-between w-full ">
           <h1 class="text-4xl font-semibold mb-4">
@@ -32,6 +33,7 @@
 
 
         <% if (currUser && currUser._id.equals(data.owner._id)) { %>
+          <%=currUser%>
           <div class="flex items-center justify-start gap-2">
             <form action="/listings/<%= data._id %>/edit" method="get">
               <button
@@ -166,7 +168,6 @@
             <%}%>
 
     </div>
-    <%=currUser%>
 
   </body>
 

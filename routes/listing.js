@@ -73,8 +73,8 @@ listingRoute.get("/:id/hostProfile", async (req, res) => {
     //     });
     // });
     // let years = calculateYearsAgo(data.createdAt);
-
-    res.render("./listings/hostProfile.ejs", { data, postCount, reviewCount , years })
+    // , postCount, reviewCount , years
+    res.render("./listings/hostProfile.ejs", { data })
 })
 
 

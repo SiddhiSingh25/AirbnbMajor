@@ -63,14 +63,14 @@ main()
     })
 
 
-async function main() {
-    await mongoose.connect(process.env.ATLASDB_URL);
-}
-
-
 // async function main() {
-//     await mongoose.connect("mongodb://localhost:27017/Wanderlust");
+//     await mongoose.connect(process.env.ATLASDB_URL);
 // }
+
+
+async function main() {
+    await mongoose.connect("mongodb://localhost:27017/Wanderlust");
+}
 
 
 app.set("view engine", "ejs")
@@ -96,6 +96,15 @@ app.use((req, res, next) => {
     res.locals.currUser = req.user;
     next()
 })
+
+app.use((req, res, next) => {
+    if (req.isAuthenticated()) {
+        res.locals.currUser = req.user;  
+    } else {
+        res.locals.currUser = null;  
+    }
+    next();
+});
 
 
 app.use("/listings", listingRoute)

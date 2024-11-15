@@ -134,7 +134,7 @@
                               <img src="<%= item.author.userImage.url %>" alt="Profile"
                                 class="w-12 h-12 rounded-full mr-4 object-cover object-center">
                               <% } else { %>
-                                <div class="w-12 h-12 text-2xl flex items-center justify-center rounded-full mr-4 border ">
+                                <div class="w-12 h-12 text-2xl flex items-center justify-center rounded-full mr-4 border bg-black text-white ">
                                  <p> <%=item.author.username.slice(0,1) %></p>
                                 </div>
                                 <% } %>
@@ -150,8 +150,7 @@
                         </div>
 
                         <div class="flex items-center mb-2">
-                          <p class="starability-result small-star" data-rating=<%=item.rating%> ></p>
-                          <!-- <span class="text-yellow-400">&#9733;&#9733;&#9733;&#9733;&#9733;</span> -->
+                          <p class="starability-result w-3 h-3" data-rating=<%=item.rating%> ></p>
                           <span class="ml-2 text-gray-500 text-sm">
                             <%= item.daysAgo %> days ago
                           </span>

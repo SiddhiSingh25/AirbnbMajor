@@ -59,12 +59,12 @@ listingRoute.get("/:id/edit", loggedIn, isOwner, wrapAsync(ListingController.edi
 listingRoute.get("/:id/hostProfile", async (req, res) => {
     let _id = req.params.id;
     let data = await Listing.findById(_id).populate({ path: "review", populate: { path: "author" } }).populate("owner")
-    // if (!data) {
-    //     req.flash("error", "Place not found..!")
-    //     res.redirect("/listings")
-    // }
-    // let postCount = data.length;
-    // let reviewCount = 0;
+    if (!data) {
+        req.flash("error", "Place not found..!")
+        res.redirect("/listings")
+    }
+    let postCount = data.length;
+    let reviewCount = 0;
     // data.forEach(listing => {
     //     listing.review.forEach(review => {
     //         if (review.author.equals(req.user._id)) {
@@ -72,9 +72,9 @@ listingRoute.get("/:id/hostProfile", async (req, res) => {
     //         }
     //     });
     // });
-    // let years = calculateYearsAgo(data.createdAt);
+    let years = calculateYearsAgo(data.createdAt);
     // , postCount, reviewCount , years
-    res.render("./listings/hostProfile.ejs", { data })
+    res.render("./listings/hostProfile.ejs", { data,  postCount, reviewCount , years })
 })
 
 

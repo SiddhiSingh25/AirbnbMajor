@@ -10,7 +10,6 @@
         <img src="<%= data.image.url %>" alt="Main Image" class="w-full h-full object-cover rounded-lg">
       </div>
       <!-- Listing Info -->
-      Vlaue of curr user<%=currUser%>
       <div class="mb-2 px-2">
         <div class="flex items-center justify-between w-full ">
           <h1 class="text-4xl font-semibold mb-4">
@@ -152,7 +151,8 @@
                         </div>
 
                         <div class="flex items-center mb-2">
-                          <span class="text-yellow-400">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                          <p class="starability-result card-text" data-rating="3" ></p>
+                          <!-- <span class="text-yellow-400">&#9733;&#9733;&#9733;&#9733;&#9733;</span> -->
                           <span class="ml-2 text-gray-500 text-sm">
                             <%= item.daysAgo %> days ago
                           </span>

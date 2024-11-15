@@ -63,7 +63,18 @@ listingRoute.get("/:id/hostProfile", async (req, res) => {
         req.flash("error", "Place not found..!")
         res.redirect("/listings")
     }
-    res.render("./listings/hostProfile.ejs", { data })
+    let postCount = data.length;
+    let reviewCount = 0;
+    data.forEach(listing => {
+        listing.review.forEach(review => {
+            if (review.author.equals(req.user._id)) {
+                reviewCount++;
+            }
+        });
+    });
+    let years = calculateYearsAgo(data.createdAt);
+
+    res.render("./listings/hostProfile.ejs", { data, postCount, reviewCount , years })
 })
 
 

@@ -6,10 +6,6 @@
     font-size: 0.1em;
     color: transparent;
   }
-  .small-star{
-    width: 70px !important;
-    height: 15px !important;
-  }
   .starability-result:after {
     content: ' ';
     position: absolute;

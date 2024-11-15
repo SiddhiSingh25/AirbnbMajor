@@ -1,0 +1,112 @@
+<%- layout('layouts/boilerplate') %>
+
+    <body>
+        <div class="p-8 max-w-4xl mx-auto bg-white rounded-lg shadow-md mb-10">
+            <div class="flex flex-row items-start w-full max-w-screen-md mx-auto mt-8 justify-between">
+                <!-- Profile Image -->
+                <div class="relative w-64 h-64">
+                    <img src="<%=data.owner.userImage.url%>" alt="Profile"
+                        class="rounded-full border-2 border-gray-300 object-cover object-center w-60 h-60">
+                </div>
+
+                <div class="w-[60%]">
+                    <div class="mt-4 text-center w-full flex gap-10">
+                        <h2 class="text-2xl font-semibold">@<%=data.owner.username%>
+                        </h2>
+                    </div>
+
+
+                    <div class="flex  text-center w-full justify-between mt-10">
+                        <div>
+                            <p class="text-2xl font-bold"><%=data.owner.username%></p>
+                            <p class="text-xl text-gray-600">Reviews</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold">2.4&#9733;</p>
+                            <p class="text-xl text-gray-600">Rating</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold"><%= new Date(data.owner.createdAt).getFullYear() %> years</p>
+                            <p class="text-xl text-gray-600">year hosting</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- About Section -->
+            <div class="lg:col-span-2 mt-10">
+                <div class="space-y-4">
+                    <p class="text-lg"></p>
+                    <%=data.owner.details.about%>
+
+                        </p>
+                </div>
+            </div>
+
+            <!-- Confirmed Information -->
+            
+                <div class="mt-8">
+                    <h3 class="font-semibold text-2xl mb-2">About <%=data.owner.username%>'s</h3>
+                    <ul class="list-disc">
+                        <%if(data.owner.details.location !=="" ){%>
+                        <li class="mb-2 text-xl list-none"><span
+                                class="inline-block w-2 h-2 rounded-full bg-[#ff385c] mr-2"></span>Live in
+                            <%=data.owner.details.location%>
+                        </li>
+                        <%}%>
+                        <%if(data.owner.details.quote !=="" ){%>
+                        <li class="mb-2 text-xl list-none"><span
+                                class="inline-block w-2 h-2 rounded-full bg-[#ff385c] mr-2"></span>
+                            <%=data.owner.details.quote%>
+                        </li>
+                        <%}%>
+                        <%if(data.owner.details.language !=="" ){%>
+                        <li class="mb-2 text-xl list-none"><span
+                                class="inline-block w-2 h-2 rounded-full bg-[#ff385c] mr-2"></span>Fluent in
+                            <%=data.owner.details.language%>
+                        </li>
+                        <%}%>
+                        <li class="mb-2 text-xl list-none"><span
+                            class="inline-block w-2 h-2 rounded-full bg-[#ff385c] mr-2"></span>Present
+                        Since <%= new Date(data.owner.createdAt).getFullYear() %>
+                    </li>
+                    </ul>
+                </div>
+
+                    <!-- social -->
+                    <%if(data.owner.url.instagram !=="" || data.owner.url.linkedin !=="" || data.owner.url.twitter !==""
+                        ){%>
+                        <div class="text-center space-y-4 py-8">
+                            <h1 class="text-2xl font-semibold text-gray-800">Contact to Host</h1>
+                            <div class="flex justify-center space-x-8">
+                                <%if(data.owner.url.instagram !=="" ){%>
+                                    <a href="<%=data.owner.url.instagram%>" target="_self"
+                                        class="hover:text-[#e1306c] transition-colors duration-300">
+                                        <i class="fa-brands fa-instagram text-3xl font-bold text-[#ff385c]"></i>
+                                    </a>
+                                    <%}%>
+
+                                        <%if(data.owner.url.linkedin !=="" ){%>
+                                            <a href="<%=data.owner.url.linkedin%>"
+                                                class="hover:text-gray-700 transition-colors duration-300">
+                                                <i class="fa-solid fa-linkedin text-3xl font-bold text-[#ff385c]"></i>
+                                            </a>
+                                            <%}%>
+
+
+                                                <%if(data.owner.url.twitter !=="" ){%>
+                                                    <a href="<%=data.owner.url.twitter%>" target="_blank"
+                                                        class="hover:text-[#1DA1F2] transition-colors duration-300">
+                                                        <i
+                                                            class="fa-brands fa-x-twitter text-3xl font-bold text-[#ff385c]"></i>
+                                                    </a>
+                                                    <%}%>
+                            </div>
+                        </div>
+                        <%}%>
+
+
+
+        </div>
+    </body>

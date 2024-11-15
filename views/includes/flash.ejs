@@ -1,0 +1,44 @@
+<div class="p-3"></div>
+<% if (success && success.length !== 0) { %>
+    <div class="h-auto w-full flex items-center justify-center">
+      <div id="alertMessage" class="alert alert-warning alert-dismissible show w-auto border-solid border-green-200 bg-green-200 flex items-center justify-center gap-5" role="alert">
+        <strong><span class="text-2xl mr-5"><%= success %></span></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+    <script>
+      // Set a timeout to remove the alert after 3 seconds
+      setTimeout(() => {
+        const alertElement = document.getElementById('alertMessage');
+        if (alertElement) {
+          alertElement.classList.remove('show');
+          alertElement.classList.add('fade');
+          // Optionally, remove the element from the DOM after fading out
+          setTimeout(() => alertElement.remove(), 500);
+        }
+      }, 5000);
+    </script>
+  <% } %>
+
+<% if (error && error.length !== 0) { %>
+    <div class="h-auto w-full flex items-center justify-center">
+      <div id="alertMessage" class="alert alert-warning alert-dismissible show w-auto border-solid border-red-200 bg-red-200" role="alert">
+        <strong><span class="text-2xl mr-5"><%= error %></span></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+    <script>
+      // Set a timeout to remove the alert after 3 seconds
+      setTimeout(() => {
+        const alertElement = document.getElementById('alertMessage');
+        if (alertElement) {
+          alertElement.classList.remove('show');
+          alertElement.classList.add('fade');
+          // Optionally, remove the element from the DOM after fading out
+          setTimeout(() => alertElement.remove(), 500);
+        }
+      }, 5000);
+    </script>
+  <% } %>
+  
+  

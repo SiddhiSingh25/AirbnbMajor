@@ -1,0 +1,32 @@
+<%- layout('layouts/boilerplate') %>
+<body>
+  <div class="pb-20 pt-14 w-full flex items-center justify-center bg-white">
+    <div class="bg-white shadow-lg rounded-lg p-12 max-w-3xl w-full">
+      <h2 class="text-4xl font-bold text-gray-800 mb-8 text-center">Login</h2>
+      
+    
+      <form action="/user/logIn" method="post">
+        <!-- Username Field -->
+        <div class="mb-5">
+          <label for="username" class="block text-gray-700 font-medium mb-2 text-2xl">Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter your username" required
+            class="form-control w-full px-4 py-3 border text-2xl border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+          <div class="invalid-feedback text-red-500">Username is required.</div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="mb-7">
+          <label for="password" class="block text-gray-700 font-medium mb-2 text-2xl">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required
+            class="form-control w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm text-2xl focus:outline-none focus:ring-2 focus:ring-indigo-300">
+          <div class="invalid-feedback text-red-500">Password is required.</div>
+        </div>
+
+        <!-- Submit Button -->
+        <input type="submit" class="w-full bg-indigo-500 text-white font-bold py-3 rounded-lg text-2xl hover:bg-indigo-600 transition duration-300" value="Log In">
+      </form>
+    
+
+    </div>
+  </div>
+</body>

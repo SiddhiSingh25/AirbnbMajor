@@ -1,0 +1,203 @@
+<div class="navbar px-28">
+  <div class="nbox1">
+    <a href="/listings">
+    <img src="/airbnb.png" alt="" />
+  </a>
+  </div>
+  <div class="nbox2">
+    <div class="searchbar">
+      <div class="sitems"> <a href="/listings">Home</a></div>
+      <div class="sitems"><a href="/listings">All Listings</a></div>
+      <div class="sitems"><a href="/listings/new">Post new</a></div>
+    </div>
+  </div>
+  <div class="nbox3">
+    <%if(!currUser){%>
+      <div id="menu" class=" flex items-center justify-start gap-2  rounded-lg p-4">
+        <form action="/user/signUp" method="get">
+          <input type="submit"
+            class="px-6 py-3 border-solid border-gray-400 border-[0.1rem] rounded-lg text-xl font-bold text-gray-900"
+            value="Sign Up">
+        </form>
+        <form action="/user/logIn" method="get">
+          <input type="submit"
+            class="px-6 py-3 border-solid border-gray-400 border-[0.1rem] rounded-lg text-xl font-bold text-gray-900"
+            value="Log In">
+        </form>
+      </div>
+      <%}%>
+
+        <%if(currUser){%>
+          <div class="flex items-center justify-center gap-[0.6rem] flex-row-reverse">
+            <form action="/user/logOut" method="get">
+              <input type="submit"
+                class="px-6 py-3 border-solid border-gray-400 border-[0.1rem] rounded-lg text-xl font-bold text-gray-900"
+                value="Log Out">
+            </form>
+            
+            <a href="/user/Dashboard" class="p-[0.3rem] border-solid border-gray-400 border-[0.1rem] rounded-full">
+              <!-- <div class="user">
+                <i class="fa-solid fa-user"></i>
+              </div> -->
+              <div class="relative w-14 h-14">
+                <% if (currUser.userImage && currUser.userImage.url) { %>
+                    <img src="<%= currUser.userImage.url %>" alt="Profile"
+                        class="rounded-full border-2 border-gray-300 object-cover object-center w-14 h-14">
+                    <% } else { %>
+                        <div
+                            class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center text-xl">
+                            <%=currUser.username.slice(0,1).toUpperCase() %>
+                        </div>
+                        <% } %>
+            </div>
+            </a>
+          </div>
+          <%}%>
+        
+
+  </div>
+</div>
+<div class="nav-icons">
+  <div class="icons">
+    <a href="/listings/category/Homes" class="arctic">
+        <img src="https://a0.muscache.com/pictures/7630c83f-96a8-4232-9a10-0398661e2e6f.jpg" alt="">
+        <p>Homes</p>
+    </a>
+
+    <a href="/listings/category/Farms" class="arctic">
+        <img src="https://a0.muscache.com/pictures/aaa02c2d-9f0d-4c41-878a-68c12ec6c6bd.jpg" alt="">
+        <p>Farms</p>
+    </a>
+
+    <a href="/listings/category/OMG!" class="arctic">
+        <img src="https://a0.muscache.com/pictures/c5a4f6fc-c92c-4ae8-87dd-57f1ff1b89a6.jpg" alt="">
+        <p>OMG!</p>
+    </a>
+
+    <a href="/listings/category/Domes" class="arctic">
+        <img src="https://a0.muscache.com/pictures/89faf9ae-bbbc-4bc4-aecd-cc15bf36cbca.jpg" alt="">
+        <p>Domes</p>
+    </a>
+
+    <a href="/listings/category/Barns" class="arctic">
+        <img src="https://a0.muscache.com/pictures/f60700bc-8ab5-424c-912b-6ef17abc479a.jpg" alt="">
+        <p>Barns</p>
+    </a>
+
+    <a href="/listings/category/Caves" class="arctic">
+        <img src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg" alt="">
+        <p>Caves</p>
+    </a>
+
+    <a href="/listings/category/Island" class="arctic">
+        <img src="https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg" alt="">
+        <p>Island</p>
+    </a>
+
+    <a href="/listings/category/Amazing views" class="arctic">
+        <img src="https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg" alt="">
+        <p>Amazing views</p>
+    </a>
+
+    <a href="/listings/category/Bed & breakfasts" class="arctic">
+        <img src="https://a0.muscache.com/pictures/5ed8f7c7-2e1f-43a8-9a39-4edfc81a3325.jpg" alt="">
+        <p>Bed & breakfasts</p>
+    </a>
+
+    <a href="/listings/category/National parks" class="arctic">
+        <img src="https://a0.muscache.com/pictures/c0a24c04-ce1f-490c-833f-987613930eca.jpg" alt="">
+        <p>National parks</p>
+    </a>
+
+    <a href="/listings/category/Lakefront" class="arctic">
+        <img src="https://a0.muscache.com/pictures/677a041d-7264-4c45-bb72-52bff21eb6e8.jpg" alt="">
+        <p>Lakefront</p>
+    </a>
+
+    <a href="/listings/category/Amazing pools" class="arctic">
+        <img src="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg" alt="">
+        <p>Amazing pools</p>
+    </a>
+
+    <a href="/listings/category/Beachfront" class="arctic">
+        <img src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg" alt="">
+        <p>Beachfront</p>
+    </a>
+
+    <a href="/listings/category/Chef kitchen's" class="arctic">
+        <img src="https://a0.muscache.com/pictures/ddd13204-a5ae-4532-898c-2e595b1bb15f.jpg" alt="">
+        <p>Chef kitchen's</p>
+    </a>
+
+    <a href="/listings/category/Camping" class="arctic">
+        <img src="https://a0.muscache.com/pictures/ca25c7f3-0d1f-432b-9efa-b9f5dc6d8770.jpg" alt="">
+        <p>Camping</p>
+    </a>
+
+    <a href="/listings/category/Treehouses" class="arctic">
+        <img src="https://a0.muscache.com/pictures/4d4a4eba-c7e4-43eb-9ce2-95e1d200d10e.jpg" alt="">
+        <p>Treehouses</p>
+    </a>
+
+    <a href="/listings/category/Top of the world" class="arctic">
+        <img src="https://a0.muscache.com/pictures/248f85bf-e35e-4dc3-a9a1-e1dbff9a3db4.jpg" alt="">
+        <p>Top of the world</p>
+    </a>
+
+    <a href="/listings/category/Cabins" class="arctic">
+        <img src="https://a0.muscache.com/pictures/732edad8-3ae0-49a8-a451-29a8010dcc0c.jpg" alt="">
+        <p>Cabins</p>
+    </a>
+
+    <a href="/listings/category/Historical homes" class="arctic">
+        <img src="https://a0.muscache.com/pictures/33dd714a-7b4a-4654-aaf0-f58ea887a688.jpg" alt="">
+        <p>Historical homes</p>
+    </a>
+
+    <a href="/listings/category/Trending" class="arctic">
+        <img src="https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg" alt="">
+        <p>Trending</p>
+    </a>
+
+    <a href="/listings/category/Houseboats" class="arctic">
+        <img src="https://a0.muscache.com/pictures/c027ff1a-b89c-4331-ae04-f8dee1cdc287.jpg" alt="">
+        <p>Houseboats</p>
+    </a>
+</div>
+
+
+  <div class="right">
+    <i class="fa-solid fa-chevron-right"></i>
+  </div>
+  <div class="filter-section">
+    <div class="filter">
+      <i class="fa-solid fa-sliders"></i>
+      <p>Filters</p>
+    </div>
+    <div class="taxes">
+      <p>Display total before Taxes</p>
+      <div class="toggle-btn">
+        <input type="checkbox" id="checkbox">
+        <label for="checkbox" class="toggle-label">
+          <span class="toggle-ball"></span>
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<script>
+
+  let a = document.querySelector("#checkbox");
+  a.addEventListener("click", ()=>{
+    
+  })
+</script>
+
+
+
+
+
+
+

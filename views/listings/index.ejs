@@ -1,0 +1,31 @@
+<% layout('layouts/boilerplate') -%>
+
+<body>
+    <div class="place-section flex gap-x-5 gap-y-16 px-32 pb-10 items-center justify-start">
+        <% data.forEach((elm) => { %>
+        <div class=" w-[32.5rem] gap-2 h-[40rem] p-3 rounded-xl shadow-md transition-transform transform hover:scale-[1.009] hover:shadow-lg hover:bg-gray-50 relative flex items-center justify-between flex-col">
+          <div class="w-full h-[80%] ">
+            <a href="/listings/<%= elm._id %>">
+                <img src="<%= elm.image.url %>" class=" relative rounded-xl hover:bg-gray-400 hover:opacity-[0.9] h-full  object-cover object-center w-full" />
+              </a>
+          </div>
+          <i class="fa-solid fa-heart absolute right-9 top-9 heart"></i>
+          <div class="flex items-start justify-around flex-col w-full h-[17%]">
+            <div class="w-full flex items-start justify-between">
+                <div class="text-3xl font-semibold text-gray-800"> <a href="/listings/<%= elm._id %>">
+                  <%= elm.title && elm.title.length > 20 ? elm.title.substring(0, 24) + "..." : elm.title || "No Title" %>
+                </a></div>
+                <div class="flex items-center justify-between gap-1">
+                    <i class="fa-solid fa-star"></i>
+                    <span class="text-[1.25rem]"><%=elm.averageRating%></span>
+                  </div>
+              </div>
+              <div class="flex items-start w-full justify-between flex-col">
+                <p class="text-[1.4rem] text-gray-600 font-[500]"><%= elm.location%>, <%= elm.country%></p>
+                <p class="text-2xl font-extralight">₹ <%= elm.price%></p>
+              </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+</body>

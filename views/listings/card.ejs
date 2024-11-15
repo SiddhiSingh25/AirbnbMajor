@@ -1,0 +1,192 @@
+<%- layout('layouts/boilerplate') %>
+
+  <body class="bg-gray-100 w-full">
+
+    <!-- Main container -->
+    <div class="max-w-[65vw] mx-auto bg-white rounded-lg shadow-lg p-4 mt-8 mb-14">
+
+      <!-- Image Gallery -->
+      <div class="p-2 mb-6 h-[60vh]">
+        <img src="<%= data.image.url %>" alt="Main Image" class="w-full h-full object-cover rounded-lg">
+      </div>
+      <!-- Listing Info -->
+      <div class="mb-2 px-2">
+        <div class="flex items-center justify-between w-full ">
+          <h1 class="text-4xl font-semibold mb-4">
+            <%= data.title %>
+          </h1>
+          <button id="shareBtn"
+            class="px-4 py-2 bg-[#ff385c] text-white text-2xl font-semibold rounded-full flex items-center justify-center gap-2">
+            <!-- <p class="text-2xl">Share</p> -->
+            <i class="fa-solid fa-share text-xl"></i>
+          </button>
+        </div>
+        <p class="mb-3 text-2xl">
+          <%= data.description %>
+        </p>
+        <h1 class="text-4xl font-semibold mb-4"> ₹ <%= data.price.toLocaleString()%>
+        </h1>
+        <h1 class="text-2xl font-medium text-gray-700 mb-4">
+          <%= data.location%>, <%= data.country%>
+        </h1>
+
+
+        <% if (currUser && currUser._id.equals(data.owner._id)) { %>
+          <div class="flex items-center justify-start gap-2">
+            <form action="/listings/<%= data._id %>/edit" method="get">
+              <button
+                class="flex items-center gap-3 px-4 py-2  text-2xl bg-sky-900 text-white rounded-lg font-semibold hover:bg-sky-800">
+                <span class="text-[1.45rem] font-semibold">Edit</span>
+                <i class="fa-solid fa-pencil text-xl"></i>
+              </button>
+
+            </form>
+            <form action="/listings/<%= data._id %>?_method=DELETE" method="post">
+              <button
+                class="flex items-center gap-3 px-4 py-2  text-2xl bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600">
+                <span class="text-[1.45rem] font-semibold">Delete</span>
+                <i class="fa-solid fa-trash text-xl"></i>
+              </button>
+            </form>
+          </div>
+          <% } %>
+
+      </div>
+      <div class="w-full h-[0.01rem] mt-3 mb-3 bg-slate-500"></div>
+      <div class="flex items-center mb-4">
+        <a href="/listings/<%=data._id%>/hostProfile">
+          <% if ( data.owner.userImage && data.owner.userImage.url) { %>
+            <img src="<%=  data.owner.userImage.url %>" alt="Profile"
+              class="w-16 h-16 rounded-full mr-4 object-cover object-center">
+            <% } else { %>
+              <div class="w-12 h-12 text-2xl rounded-full mr-4 border">
+                <%=userDetails.username.slice(0,1) %>
+              </div>
+              <% } %>
+        </a>
+        <div>
+          <a href="/listings/<%=data._id%>/hostProfile">
+            <h3 class="font-semibold text-2xl">Hosted by <%= data.owner.username%>
+          </a>
+          </h3>
+          <p class="text-gray-500 text">
+            <%=holdValue%>
+          </p>
+        </div>
+      </div>
+      <%if(currUser){%>
+        <form action="/listings/<%= data._id %>/reviews" method="post" novalidate class="needs-validation">
+          <h2 class="text-3xl font-semibold mb-3">Leave a comment</h2>
+
+          <div class="mb-4">
+            <label for="rating" class="block text-2xl font-medium text-gray-700">Rating (1-5):</label>
+            <input type="range" name="review[rating]" id="rating" min="1" max="5" required class="w-full mt-2 text-xl">
+          </div>
+          <!-- 
+          <fieldset class="starability-grow">
+            <legend>First rating:</legend>
+            <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+            <input type="radio" id="first-rate1" name="rating" value="1" />
+            <label for="first-rate1" title="Terrible">1 star</label>
+            <input type="radio" id="first-rate2" name="rating" value="2" />
+            <label for="first-rate2" title="Not good">2 stars</label>
+            <input type="radio" id="first-rate3" name="rating" value="3" />
+            <label for="first-rate3" title="Average">3 stars</label>
+            <input type="radio" id="first-rate4" name="rating" value="4" />
+            <label for="first-rate4" title="Very good">4 stars</label>
+            <input type="radio" id="first-rate5" name="rating" value="5" />
+            <label for="first-rate5" title="Amazing">5 stars</label>
+          </fieldset> -->
+
+          <div class="mb-4 ">
+            <label for="comment" class="block text-xl font-medium text-gray-700">Comment:</label>
+            <textarea name="review[comment]" id="comment" rows="4" required
+              class="  form-control w-full p-2 border text-xl border-gray-300 rounded-lg mt-2"></textarea>
+            <div class="invalid-feedback text-red-500">Give a rieveew</div>
+          </div>
+
+          <button class="px-5 text-2xl bg-red-500 text-white py-2 rounded-lg font-semibold">Submit</button>
+        </form>
+        <%}%>
+
+          <%if(data.review.length> 0){%>
+            <div class=" mx-auto my-8 p-6 bg-gray-50 rounded-lg shadow-md w-full">
+              <h1 class="text-3xl font-bold text-gray-800 mb-6">All Reviews</h1>
+              <div class="space-y-4">
+                <% data.review.forEach((item)=> { %>
+                  <div class="max-w-md p-4 border border-gray-300 rounded-lg shadow-lg relative">
+                    <!-- Delete button -->
+
+                    <% if (currUser && currUser._id.equals(item.author._id)) { %>
+                      <form action="/listings/<%=data._id%>/reviews/<%=item._id%>?_method=DELETE" method="post">
+                        <button
+                          class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition duration-200 ease-in-out"><i
+                            class="fa-solid fa-trash-alt"></i></button>
+                      </form>
+                      <%}%>
+                        <!-- <button class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition duration-200 ease-in-out">
+                        
+                    </button> -->
+
+                        <div class="flex items-center mb-2">
+                          <a href="/listings/<%=data._id%>/hostProfile">
+                            <% if ( data.owner.userImage && data.owner.userImage.url) { %>
+                              <img src="<%=  data.owner.userImage.url %>" alt="Profile"
+                                class="w-12 h-12 rounded-full mr-4 object-cover object-center">
+                              <% } else { %>
+                                <div class="w-12 h-12 text-2xl rounded-full mr-4 border">
+                                  <%=userDetails.username.slice(0,1) %>
+                                </div>
+                                <% } %>
+                          </a>
+                          <div class="ml-4">
+                            <h2 class="font-semibold">
+                              <%= item.author.username %>
+                            </h2>
+                            <p class="text-gray-500 text-sm">
+                              <%= holdValue %> on Airbnb
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="flex items-center mb-2">
+                          <span class="text-yellow-400">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                          <span class="ml-2 text-gray-500 text-sm">
+                            <%= item.daysAgo %> days ago
+                          </span>
+                        </div>
+
+                        <p class="text-gray-700">
+                          <%= item.comment %>
+                        </p>
+                  </div>
+                  <% }) %>
+              </div>
+            </div>
+            <%}%>
+
+    </div>
+
+  </body>
+
+  <script>
+    const shareButton = document.getElementById("shareBtn");
+
+    shareButton.addEventListener("click", () => {
+      if (navigator.share) {
+        navigator.share({
+          title: "Awesome Listing", // Title to share
+          text: "Check out this amazing listing!", // Description
+          url: window.location.href, // Current page URL to share
+        })
+          .then(() => {
+            console.log("Sharing was successful.");
+          })
+          .catch((error) => {
+            console.log("Sharing failed:", error);
+          });
+      } else {
+        alert("Your browser does not support sharing.");
+      }
+    });
+  </script>

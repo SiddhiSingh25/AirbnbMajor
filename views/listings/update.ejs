@@ -1,0 +1,104 @@
+<%- layout('layouts/boilerplate') %>
+
+    <body>
+        <div class="flex items-center justify-center min-h-screen bg-gray-100">
+            <div class="bg-white p-12 rounded-lg shadow-lg w-full max-w-5xl">
+                <h1 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Update Listing</h1>
+                <form action="/listings/<%=data._id%>?_method=PUT" method="post" enctype="multipart/form-data"
+                    class="space-y-6 needs-validation" novalidate>
+                    <div>
+                        <label class="block text-gray-700 text-2xl font-medium mb-2">Title</label>
+                        <input type="text" name="listing[title]" value="<%=data.title%>"
+                            class="w-full mt-2 px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-xl"
+                            required>
+                        <div class="invalid-feedback text-red-500">Title is required.</div>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 text-2xl font-medium mb-2">Description</label>
+                        <input type="text" name="listing[description]" value="<%=data.description%>"
+                            class="w-full mt-2 px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-xl"
+                            required>
+                        <div class="invalid-feedback text-red-500">Title is required.</div>
+                    </div>
+
+                    <div><img src="<%=orignalUrl%>" class="w-40 h-40 object-cover object-center" alt=""></div>
+
+                    <div class="flex items-center justify-center h-60  mb-6 w-full flex-col">
+                        <label for="profile-photo" class="cursor-pointer">
+                            <img src="<%=orignalUrl%>" alt="Profile Photo"
+                                class="w-40 h-40 mb-2 rounded-full border-2 border-gray-300 hover:opacity-75 transition-opacity">
+                        </label>
+                        <input type="file" id="profile-photo" class="hidden" accept="image/*" name="listing[image]">
+                    </div>
+
+                    <!-- <div>
+                        <label class="block text-gray-700 text-2xl font-medium mb-2">Image</label>
+                        <input type="file" name="listing[image]"
+                            class="w-full mt-2 px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-xl">
+                    </div> -->
+
+
+                    <div class="flex items-center justify-between w-full gap-2">
+                        <div class="w-[50%]">
+                            <label class="block text-gray-700 text-2xl font-medium mb-2">Price</label>
+                            <input type="text" name="listing[price]" value="<%=data.price%>"
+                                class="w-full mt-2 px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-xl"
+                                required>
+                        </div>
+
+
+                        <div class="w-[50%]">
+                            <label class="block text-gray-700 text-2xl font-medium mb-2">Category</label>
+                            <select name="listing[category]"
+                                class="form-control w-full mt-2 px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-xl"
+                                required>
+                                <option value="<%=data.category%>"><%=data.category%></option>
+                                <option value="Homes">Homes</option>
+                                <option value="Farms">Farms</option>
+                                <option value="OMG!">OMG!</option>
+                                <option value="Barns">Barns</option>
+                                <option value="Caves">Caves</option>
+                                <option value="Island">Island</option>
+                                <option value="Bed & breakfasts">Bed & breakfasts</option>
+                                <option value="National parks">National parks</option>
+                                <option value="Lakefront">Lakefront</option>
+                                <option value="Amazing pools">Amazing pools</option>
+                                <option value="Beachfront">Beachfront</option>
+                                <option value="Chef kitchens">Chef kitchens</option>
+                                <option value="Camping">Camping</option>
+                                <option value="Treehouses">Treehouses</option>
+                                <option value="Cabins">Cabins</option>
+                                <option value="Historical homes">Historical homes</option>
+                                <option value="Trending">Trending</option>
+                            </select>
+                            <div id="error-message" class="text-red-500 hidden">Category is required</div>
+                        </div>
+                    </div>
+
+
+                    <div class="flex items-center justify-between w-full gap-2">
+                        <div class="w-[50%]">
+                            <label class="block text-gray-700 text-2xl font-medium mb-2">Location</label>
+                            <input type="text" name="listing[location]" value="<%=data.location%>"
+                                class="w-full mt-2 px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-xl"
+                                required>
+                        </div>
+
+                        <div class="w-[50%]">
+                            <label class="block text-gray-700 text-2xl font-medium mb-2">Country</label>
+                            <input type="text" name="listing[country]" value="<%=data.country%>"
+                                class="w-full mt-2 px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-xl"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-8">
+                        <input type="submit" value="Save"
+                            class="w-full bg-[#ff385c] text-2xl text-white py-3 font-semibold rounded-lg hover:bg-[#ff3870] transition-colors duration-300 cursor-pointer">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="/js/script.js"></script>
+    </body>

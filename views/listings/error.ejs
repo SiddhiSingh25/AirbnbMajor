@@ -1,0 +1,14 @@
+<%- layout('layouts/boilerplate') %>
+<body>
+    <div class="h-[100vh] w-[100vw] flex items-center justify-center">
+        <div class="card text-bg-danger mb-3" style="min-width: 28rem;">
+            <div class="card-header"><%=err.name%></div>
+            <div class="card-body">
+              <p class="card-text"><div class="text-bg-danger p-4  text-2xl rounded"><%=err.message %></div></p>
+              <p class="card-text"><div class="text-bg-danger p-4  text-2xl rounded"><%=err.stack%></div></p>
+
+            </div>
+          </div>
+    </div>
+    
+</body>

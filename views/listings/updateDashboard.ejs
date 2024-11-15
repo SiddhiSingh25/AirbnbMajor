@@ -1,0 +1,96 @@
+<%- layout('layouts/boilerplate') %>
+
+    <body>
+        <div class="w-full min-h-[100vh] flex items-center flex-col justify-center">
+            <div class="bg-white w-full max-w-4xl p-6 rounded-lg shadow-lg">
+                <form action="/user/dashboard/<%=userDetails._id%>" enctype="multipart/form-data" method="post">
+                    <!-- Profile Photo Section -->
+                    <div class="flex items-center justify-center h-60 relative mb-6 w-full flex-col">
+                        <label for="profile-photo" class="cursor-pointer">
+                            <% if (userDetails.userImage && userDetails.userImage.url) { %>
+                                <img src="<%= userDetails.userImage.url %>" alt="Profile"
+                                    class="w-40 h-40 mb-2 rounded-full border-2 border-gray-300 hover:opacity-75 transition-opacity flex items-center justify-center">
+                                <% } else { %>
+                                    <div
+                                        class="w-40 h-40 mb-2 text-5xl bg-gray-950 text-white rounded-full border-2 border-gray-300 hover:opacity-75 flex items-center justify-center transition-opacity">
+                                        <%=userDetails.username.slice(0,1).toUpperCase() %>
+                                    </div>
+                                    <% } %>
+                        </label>
+                        <input type="file" id="profile-photo" class="hidden" accept="image/*" name="userImage">
+                        <input type="text" value="@the_sid_.01"
+                            class="text-2xl font-semibold w-full border-none bg-transparent text-gray-800 focus:outline-none text-center"
+                            readonly>
+                    </div>
+
+
+                    <!-- About Section -->
+                    <div class="mb-4">
+                        <label class="block text-xl font-medium text-gray-700">About</label>
+                        <input type="text" placeholder="Write about yourself" name="about"
+                            value="<%=userDetails.details.about%>"
+                            class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md text-xl focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+                    <!-- Language Section -->
+                    <div class="mb-4">
+                        <label class="block text-xl font-medium text-gray-700">Language</label>
+                        <input type="text" placeholder="Preferred language" name="language"
+                            value="<%=userDetails.details.language%>"
+                            class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md text-xl focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+                    <!-- Location Section -->
+                    <div class="mb-4">
+                        <label class="block text-xl font-medium text-gray-700">Location</label>
+                        <input type="text" placeholder="Your location" name="location"
+                            value="<%=userDetails.details.location%>"
+                            class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md text-xl focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+                    <!-- Quote About You Section -->
+                    <div class="mb-4">
+                        <label class="block text-xl font-medium text-gray-700">Quote About You</label>
+                        <input type="text" placeholder="Your personal quote" name="quote"
+                            value="<%=userDetails.details.quote%>"
+                            class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md text-xl focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+
+                    <h2 class="text-lg font-semibold mb-2">Social accounts</h2>
+
+
+                    <div class="flex items-center mb-3">
+                        <div class="mr-2 text-pink-800">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </div>
+                        <input type="url" placeholder="Instagram Url" name="instagram"
+                            value="<%=userDetails.url.instagram%>"
+                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500" />
+                    </div>
+
+
+                    <div class="flex items-center mb-3">
+                        <div class="mr-2 text-blue-600">
+                            <i class="fab fa-linkedin text-2xl"></i>
+                        </div>
+                        <input type="url" placeholder="Linkedin Url" name="linkedin"
+                            value="<%=userDetails.url.linkedin%>"
+                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
+
+                    <div class="flex items-center mb-3">
+                        <div class="mr-2 text-sky-400">
+                            <i class="fab fa-twitter text-2xl"></i>
+                        </div>
+                        <input type="url" placeholder="Twitter Url" name="twitter" value="<%=userDetails.url.twitter%>"
+                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-sky-500" />
+                    </div>
+
+                    <input type="submit" value="Save Changes"
+                        class="mt-1 w-full py-2 text-xl font-medium text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
+                </form>
+
+            </div>
+        </div>
+    </body>

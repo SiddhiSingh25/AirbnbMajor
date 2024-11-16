@@ -16,13 +16,11 @@
 
                     <div>
                         <label class="block text-gray-700 text-2xl font-medium mb-2">Description</label>
-                        <input type="text" name="listing[description]" value="<%=data.description%>"
+                        <input type="text" name="listing[desc]" value="<%=data.desc%>"
                             class="w-full mt-2 px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-xl"
                             required>
-                        <div class="invalid-feedback text-red-500">Title is required.</div>
+                        <div class="invalid-feedback text-red-500">Description is required.</div>
                     </div>
-
-                    <div><img src="<%=orignalUrl%>" class="w-40 h-40 object-cover object-center" alt=""></div>
 
                     <div class="flex items-center justify-center h-60  mb-6 w-full flex-col">
                         <label for="profile-photo" class="cursor-pointer">
@@ -31,12 +29,6 @@
                         </label>
                         <input type="file" id="profile-photo" class="hidden" accept="image/*" name="listing[image]">
                     </div>
-
-                    <!-- <div>
-                        <label class="block text-gray-700 text-2xl font-medium mb-2">Image</label>
-                        <input type="file" name="listing[image]"
-                            class="w-full mt-2 px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-xl">
-                    </div> -->
 
 
                     <div class="flex items-center justify-between w-full gap-2">

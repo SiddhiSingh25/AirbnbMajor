@@ -3,7 +3,7 @@
   <body class="bg-gray-100 w-full">
 
     <!-- Main container -->
-    <div class="md:max-w-[65vw] max-w-[85vw] mx-auto bg-white rounded-lg shadow-lg md:p-4 lg:p-4 p-2 mt-3 md:mt-8 mb-14">
+    <div class="md:max-w-[65vw] max-w-[90vw] mx-auto bg-white rounded-lg shadow-lg md:p-4 lg:p-4 p-1 mt-3 md:mt-8 mb-14">
 
       <!-- Image Gallery -->
       <div class="p-2 mb-6 h-[60vh]">
@@ -52,8 +52,8 @@
           <% } %>
 
       </div>
-      <div class="w-full h-[0.01rem] mt-3 mb-3 bg-slate-500"></div>
-      <div class="flex items-center mb-4">
+      <div class="w-full h-[0.01rem] mt-3 mb-3 bg-slate-500 "></div>
+      <div class="flex items-center mb-4 px-2">
         <a href="/listings/<%=data._id%>/hostProfile">
           <% if ( data.owner.userImage && data.owner.userImage.url) { %>
             <img src="<%=  data.owner.userImage.url %>" alt="Profile"
@@ -75,7 +75,7 @@
         </div>
       </div>
       <%if(currUser){%>
-        <form action="/listings/<%= data._id %>/reviews" method="post" novalidate class="needs-validation">
+        <form action="/listings/<%= data._id %>/reviews" method="post" novalidate class="needs-validation px-2">
           <h2 class="text-3xl font-semibold mb-3">Leave a comment</h2>
 
           <div class="mb-4">
@@ -94,7 +94,7 @@
             <input type="radio" id="first-rate5" name="review[rating]" value="5" />
             <label for="first-rate5" title="Amazing">5 stars</label>
           </fieldset></div>
-          <div class="mb-4 ">
+          <div class="mb-4 px-2">
             <label for="comment" class="block text-xl font-medium text-gray-700">Comment:</label>
             <textarea name="review[comment]" id="comment" rows="4" required
               class="  form-control w-full p-2 border text-xl border-gray-300 rounded-lg mt-2"></textarea>
@@ -106,9 +106,9 @@
         <%}%>
 
           <%if(data.review.length> 0){%>
-            <div class=" mx-auto my-8 p-6 bg-gray-50 rounded-lg shadow-md w-full">
+            <div class=" mx-auto my-8 p-6 bg-gray-50 rounded-lg shadow-md w-full px-2">
               <h1 class="text-3xl font-bold text-gray-800 mb-6">All Reviews</h1>
-              <div class="space-y-4 relative">
+              <div class="space-y-4 relative ">
                 <% data.review.forEach((item)=> { %>
                   <div class="max-w-xl p-4 border border-gray-300 rounded-lg shadow-lg relative">
                     <!-- Delete button -->

@@ -111,6 +111,24 @@ app.use((req, res, next) => {
     res.render("./listings/hero.ejs")
  })
 
+ app.patch("/update-tax-all", async (req, res) => {
+    const { tax } = req.body;
+  
+    try {
+      const updatedListings = await Listing.updateMany({}, { tax });
+  
+      res.json({
+        message: "Tax value updated for all listings",
+        tax,
+        modifiedCount: updatedListings.modifiedCount,
+      });
+    } catch (error) {
+      console.error("Error updating tax for all listings:", error);
+      res.status(500).json({ message: "Internal server error!" });
+    }
+  });
+  
+
 app.use("/listings", listingRoute)
 app.use("/listings/:id/reviews", reviewRoute);
 app.use("/user", userRoute);

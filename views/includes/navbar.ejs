@@ -6,7 +6,7 @@
   </div>
   <div class="nbox2">
     <div class="searchbar">
-      <div class="sitems"> <a href="/listings">Home</a></div>
+      <div class="sitems"> <a href="/">Home</a></div>
       <div class="sitems"><a href="/listings">All Listings</a></div>
       <div class="sitems"><a href="/listings/new">Post new</a></div>
     </div>
@@ -187,13 +187,34 @@
   </div>
 
 </div>
-<script>
 
-  let a = document.querySelector("#checkbox");
-  a.addEventListener("click", ()=>{
-    
-  })
+
+<script>
+  const checkbox = document.querySelector("#checkbox");
+
+  checkbox.addEventListener("click", async () => {
+    try {
+      const response = await fetch(`/update-tax-all`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ tax: checkbox.checked }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert(`Tax updated for all listings to: ${result.tax}`);
+      } else {
+        alert("Failed to update tax for all listings!");
+      }
+    } catch (error) {
+      console.error("Error updating tax for all listings:", error);
+    }
+  });
 </script>
+
 
 
 

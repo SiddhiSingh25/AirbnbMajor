@@ -6,7 +6,7 @@ let ExpressError = require("./ExpressError")
 let init = require("../init/data");
 const Listing = require("../Models/Listing");
 
-let Mongo_Url = "mongodb://localhost:27017/Wanderlust";
+let Mongo_Url = "mongodb+srv://siddhisingh18102005:sSSurS1OwE11lpiy@cluster0.gapdh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 main()
 
@@ -24,7 +24,7 @@ async function main() {
 // send data to database
 const initDb = async(req,res)=>{
     await Listing.deleteMany()
-    init.data = init.data.map((obj)=>({...obj, owner: "6731a3318936e22d437b1444", createdAt : Date.now() } ))
+    init.data = init.data.map((obj)=>({...obj, owner: "67374504058301afbb8fb04b", createdAt : Date.now() } ))
     await Listing.insertMany(init.data)
     console.log("Data send sucesssfully")
 }

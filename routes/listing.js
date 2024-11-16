@@ -53,28 +53,41 @@ listingRoute.route("/:id")
 listingRoute.get("/:id/edit", loggedIn, isOwner, wrapAsync(ListingController.editListing))
 
 
+function calculateYearsAgo(createdAt) {
+    const currentDate = new Date(); // Current date
+    const createdDate = new Date(createdAt); // Parse the createdAt string to a Date object
+    const differenceInMilliseconds = currentDate - createdDate; // Difference in milliseconds
+    const differenceInYears = differenceInMilliseconds / (1000 * 60 * 60 * 24 * 365.25); // Convert to years, accounting for leap years
+    return Math.floor(differenceInYears); // Round down to the nearest whole number
+}
+
+
+
 //host profile
 
 
-listingRoute.get("/:id/hostProfile", wrapAsync, async (req, res) => {
+listingRoute.get("/:id/hostProfile", async (req, res) => {
     let _id = req.params.id;
-    let data = await Listing.findById(_id).populate({ path: "review", populate: { path: "author" } }).populate("owner")
+    let allListings = await Listing.find().populate({ path: "review", populate: { path: "author" } }).populate("owner");
+    let data = await Listing.findById(_id).populate({ path: "review", populate: { path: "author" } }).populate("owner");
+    const userId = data.owner._id;
+    let post = await Listing.find({owner : userId});
     if (!data) {
         req.flash("error", "Place not found..!")
         res.redirect("/listings")
     }
-    let postCount = data;
+    let postCount = post.length;
     let reviewCount = 0;
-    // data.forEach(listing => {
-    //     listing.review.forEach(review => {
-    //         if (review.author.equals(req.user._id)) {
-    //             reviewCount++;
-    //         }
-    //     });
-    // });
-    // let years = calculateYearsAgo(data.createdAt);
+    allListings.forEach(listing => {
+        listing.review.forEach(review => { 
+            if (review.author.equals(userId)) {
+                reviewCount++;
+            }
+        });
+    });
+     let years = calculateYearsAgo(data.owner.createdAt);
     // , postCount, reviewCount , years
-    res.render("./listings/hostProfile.ejs", { data, postCount})
+    res.render("./listings/hostProfile.ejs", { data, postCount, years, reviewCount});
 })
 
 

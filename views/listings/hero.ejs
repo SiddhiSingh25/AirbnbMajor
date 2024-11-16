@@ -1,37 +1,13 @@
 <% layout('layouts/boilerplate') -%>
-
 <div class="bg-gray-50">
-<section class="relative h-screen bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1522199710521-72d69614c702');">
-    <div class="absolute inset-0 bg-black opacity-50"></div>
+<section class="relative h-screen bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1682686578023-dc680e7a3aeb?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    <div class="absolute inset-0 bg-black opacity-[0.3]"></div>
     <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10">
-        <h1 class="text-5xl font-extrabold mb-6">Travel Anywhere, Stay Everywhere</h1>
-        <p class="text-lg max-w-2xl mb-8">Explore unique accommodations, experience the world differently, and connect with diverse cultures—all in one platform. Discover your next adventure with Airbnb.</p>
-        <button class="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-lg text-lg">Get Started</button>
+        <h1 class="text-6xl font-extrabold mb-6">Travel Anywhere, Stay Everywhere</h1>
+        <p class="text-xl max-w-2xl mb-8">Explore unique accommodations, experience the world differently, and connect with diverse cultures—all in one platform. Discover your next adventure with Airbnb.</p>
+        <form action="/listings" method="get">
+        <button class="bg-[#ff2335] hover:bg-[#ff2f52] text-white px-8 py-3 rounded-lg text-xl font-semibold">Get Started</button>
+    </form>
     </div>
 </section>
 
-<!-- About Section -->
-<section class="py-20 bg-gray-100">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold text-gray-800 mb-6">About Airbnb</h2>
-        <p class="text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
-            Airbnb was born in 2008 with the idea of providing travelers with unique stays and hosts with an opportunity to earn by sharing their space. Today, we offer millions of listings in more than 220 countries, spanning everything from urban apartments to countryside retreats.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white shadow-lg rounded-lg p-6">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">Stay Unique</h3>
-                <p class="text-gray-600">From cozy cabins to luxurious villas, explore accommodations you won't find anywhere else.</p>
-            </div>
-            <div class="bg-white shadow-lg rounded-lg p-6">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">Host with Ease</h3>
-                <p class="text-gray-600">Join a community of millions of hosts and share your space to earn extra income.</p>
-            </div>
-            <div class="bg-white shadow-lg rounded-lg p-6">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">Travel with Confidence</h3>
-                <p class="text-gray-600">With world-class customer support and trusted reviews, plan your trips stress-free.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-</div>

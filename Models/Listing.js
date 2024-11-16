@@ -40,7 +40,8 @@ let listingSchema = new Schema({
     country : {type : String},
     review : [{type : mongoose.Schema.Types.ObjectId, ref : "Review"}],
     owner : {type : mongoose.Schema.Types.ObjectId, ref : "User"},
-    createdAt : {type : Date, default : Date.now()}
+    createdAt : {type : Date, default : Date.now()},
+    tax : { type: Boolean, default: false },
 });
 
 listingSchema.post("findOneAndDelete", async(listing)=>{

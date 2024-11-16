@@ -108,8 +108,10 @@ app.use((req, res, next) => {
 // });
 
  app.get("/",(req,res)=>{
-    res.render("/listings/hero.ejs")
+    // res.render("./listings/hero.ejs")
+    res.send("welcome")
  })
+
 app.use("/listings", listingRoute)
 app.use("/listings/:id/reviews", reviewRoute);
 app.use("/user", userRoute);

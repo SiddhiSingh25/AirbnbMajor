@@ -57,17 +57,31 @@ module.exports.editListing = async (req, res) => {
 
 //updateListing Controller
 module.exports.updateListing = async (req, res) => {
-    let _id = req.params.id;
-    let data = await Listing.findByIdAndUpdate(_id, { ...req.body.listing });
-    if (typeof (req.file) !== undefined) {
-        let url = req.file.path;
-        let filename = req.file.filename;
-        data.image = { url, filename };
-        data.save()
+    try {
+        const { id } = req.params;
+
+        // Update the listing data from req.body
+        let data = await Listing.findByIdAndUpdate(id, { ...req.body.listing }, { new: true });
+        if (!data) {
+            req.flash("error", "Listing not found.");
+            return res.redirect("/listings");
+        }
+
+        // Check if a file is uploaded
+        if (req.file) {
+            const { path: url, filename } = req.file;
+            data.image = { url, filename };
+            await data.save(); // Save the updated image data
+        }
+
+        req.flash("success", "Listing updated..!");
+        res.redirect(`/listings/${id}`);
+    } catch (error) {
+        console.error("Error updating listing:", error);
+        req.flash("error", "An error occurred while updating the listing.");
+        res.redirect("/listings");
     }
-    req.flash("success", "Listing updated..!")
-    res.redirect(`/listings/${_id}`)
-}
+};
 
 function calculateDaysAgo(createdAt) {
     const currentDate = new Date(); // Current date

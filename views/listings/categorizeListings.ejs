@@ -6,7 +6,7 @@
        <p class="text-2xl text-center w-full font-semibold">No listing Posted yet!</p>
       <%}%>
         <% listings.forEach((elm) => { %>
-        <div class=" w-[35rem] md:w-[32.5rem] gap-4 md:h-[40rem] h-[42rem] p-3 rounded-xl shadow-md transition-transform transform hover:scale-[1.009] hover:shadow-lg hover:bg-gray-50 relative flex items-center justify-between flex-col">
+        <div class="w-[35rem] md:w-[32.5rem] gap-4 md:h-[40rem] h-[42rem] p-3 rounded-xl shadow-md transition-transform transform hover:scale-[1.009] hover:shadow-lg hover:bg-gray-50 relative flex items-center justify-between flex-col">
           <div class="w-full h-[80%] ">
             <a href="/listings/<%= elm._id %>">
                 <img src="<%= elm.image.url %>" class=" relative rounded-xl hover:bg-gray-400 hover:opacity-[0.9] h-full  object-cover object-center w-full" />

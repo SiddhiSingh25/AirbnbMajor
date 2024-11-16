@@ -4,7 +4,7 @@
         <div class="p-8 max-w-4xl mx-auto bg-white rounded-lg shadow-md mb-10">
             <div class="flex flex-row items-start w-full max-w-screen-md mx-auto mt-8 justify-between">
                 <!-- Profile Image -->
-                <div class="relative w-64 h-64">
+                <div class="relative w-56 h-56 lg:w-64 lg:h-64 md:w-64 md:h-64">
                     <% if (userDetails.userImage && userDetails.userImage.url) { %>
                         <img src="<%= userDetails.userImage.url %>" alt="Profile"
                             class="rounded-full object-cover object-center w-60 h-60 border-solid border-gray-200 border-[0.4rem]">
@@ -55,10 +55,7 @@
             <div class="lg:col-span-2 mt-10">
                 <div class="space-y-4">
                     <p class="text-2xl">
-                        <!-- Hi! Im’ Sanket and I’m eager to host families and friends in our private villas, on behalf of
-                        Saffron Stays, a leading private villa rental & luxury hospitality start-up. Come rain or shine,
-                        I
-                        absolutely love travelling... -->
+                        
                         <%=userDetails.details.about%>
 
                     </p>

@@ -1,12 +1,12 @@
 <%- layout('layouts/boilerplate') %>
 
 <body>
-    <div class="md:max-w-[65vw] max-w-[85vw] mx-auto bg-white rounded-lg shadow-lg md:p-4 lg:p-4 p-2 mt-3 md:mt-8 mb-14">
+    <div class="md:max-w-[65vw] gap-3 max-w-[85vw] mx-auto bg-white rounded-lg shadow-lg md:p-4 lg:p-4 p-2 mt-3 md:mt-8 mb-14">
       <%if(listings.length === 0){%>
        <p class="text-2xl text-center w-full font-semibold">No listing Posted yet!</p>
       <%}%>
         <% listings.forEach((elm) => { %>
-        <div class=" w-[35rem] md:w-[32.5rem] gap-2 md:h-[40rem] h-[42rem] p-3 rounded-xl shadow-md transition-transform transform hover:scale-[1.009] hover:shadow-lg hover:bg-gray-50 relative flex items-center justify-between flex-col">
+        <div class=" w-[35rem] md:w-[32.5rem] gap-4 md:h-[40rem] h-[42rem] p-3 rounded-xl shadow-md transition-transform transform hover:scale-[1.009] hover:shadow-lg hover:bg-gray-50 relative flex items-center justify-between flex-col">
           <div class="w-full h-[80%] ">
             <a href="/listings/<%= elm._id %>">
                 <img src="<%= elm.image.url %>" class=" relative rounded-xl hover:bg-gray-400 hover:opacity-[0.9] h-full  object-cover object-center w-full" />
@@ -15,7 +15,7 @@
           <i class="fa-solid fa-heart absolute right-9 top-9 heart"></i>
           <div class="flex items-start justify-around flex-col w-full h-[17%]">
             <div class="w-full flex items-start justify-between">
-                <div class="text-3xl font-semibold text-gray-800"> <a href="/listings/<%= elm._id %>">
+                <div class="md:text-3xl text-2xl font-semibold text-gray-800"> <a href="/listings/<%= elm._id %>">
                   <%= elm.title && elm.title.length > 20 ? elm.title.substring(0, 24) + "..." : elm.title || "No Title" %>
                 </a></div>
                 <div class="flex items-center justify-between gap-1">

@@ -252,3 +252,9 @@
     -webkit-animation-fill-mode: forwards;
             animation-fill-mode: forwards;
   }
+
+
+  .starability-result.new {
+    font-size: 12px; /* Adjust to your preferred size */
+    transform: scale(0.6); /* Scale down the stars */
+  }

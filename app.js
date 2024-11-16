@@ -113,7 +113,6 @@ app.use((req, res, next) => {
 
  app.patch("/update-tax-all", async (req, res) => {
     const { tax } = req.body;
-  
     try {
       const updatedListings = await Listing.updateMany({}, { tax });
   

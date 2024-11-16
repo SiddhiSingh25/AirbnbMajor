@@ -3,7 +3,7 @@
   <body class="bg-gray-100 w-full">
 
     <!-- Main container -->
-    <div class="max-w-[65vw] mx-auto bg-white rounded-lg shadow-lg p-4 mt-8 mb-14">
+    <div class="md:max-w-[65vw] max-w-[85vw] mx-auto bg-white rounded-lg shadow-lg md:p-4 lg:p-4 p-2 mt-3 md:mt-8 mb-14">
 
       <!-- Image Gallery -->
       <div class="p-2 mb-6 h-[60vh]">
@@ -108,9 +108,9 @@
           <%if(data.review.length> 0){%>
             <div class=" mx-auto my-8 p-6 bg-gray-50 rounded-lg shadow-md w-full">
               <h1 class="text-3xl font-bold text-gray-800 mb-6">All Reviews</h1>
-              <div class="space-y-4">
+              <div class="space-y-4 relative">
                 <% data.review.forEach((item)=> { %>
-                  <div class="max-w-md p-4 border border-gray-300 rounded-lg shadow-lg relative">
+                  <div class="max-w-xl p-4 border border-gray-300 rounded-lg shadow-lg relative">
                     <!-- Delete button -->
 
                     <% if (currUser && currUser._id.equals(item.author._id)) { %>
@@ -120,39 +120,37 @@
                             class="fa-solid fa-trash-alt"></i></button>
                       </form>
                       <%}%>
-                        <!-- <button class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition duration-200 ease-in-out">
                         
-                    </button> -->
 
                         <div class="flex items-center mb-2">
                           <a href="/listings/<%=data._id%>/hostProfile">
                             <% if ( item.author.userImage && item.author.userImage.url) { %>
                               <img src="<%= item.author.userImage.url %>" alt="Profile"
-                                class="w-12 h-12 rounded-full mr-4 object-cover object-center">
+                                class="w-14 h-14 rounded-full mr-4 object-cover object-center">
                               <% } else { %>
-                                <div class="w-12 h-12 text-2xl flex items-center justify-center rounded-full mr-4 border bg-black text-white ">
+                                <div class="w-14 h-14 text-2xl flex items-center justify-center rounded-full mr-4 border bg-black text-white ">
                                  <p> <%=item.author.username.slice(0,1) %></p>
                                 </div>
                                 <% } %>
                           </a>
                           <div class="ml-4">
-                            <h2 class="font-semibold">
+                            <h2 class="font-semibold text-2xl">
                               <%= item.author.username %>
                             </h2>
-                            <p class="text-gray-500 text-sm">
+                            <p class="text-gray-500 text-xl">
                               <%= holdValue %> on Airbnb
                             </p>
                           </div>
                         </div>
 
-                        <div class="flex items-center mb-2">
-                          <p class="starability-result w-3 h-3" data-rating=<%=item.rating%> ></p>
-                          <span class="ml-2 text-gray-500 text-sm">
+                        <div class="flex items-center flex-row-reverse mb-2 justify-between">
+                            <p class="starability-result new flex items-start absolute left-0" data-rating=<%=item.rating%>></p>
+                          <span class="ml-2 text-gray-500 text-xl">
                             <%= item.daysAgo %> days ago
                           </span>
                         </div>
 
-                        <p class="text-gray-700">
+                        <p class="text-gray-700 text-xl">
                           <%= item.comment %>
                         </p>
                   </div>

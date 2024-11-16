@@ -1,17 +1,17 @@
-<div class="navbar px-28">
+<div class="navbar  lg:px-28 hidden md:flex sm:flex ">
   <div class="nbox1">
     <a href="/listings">
-    <img src="/airbnb.png" alt="" />
-  </a>
+      <img src="/airbnb.png" alt="" />
+    </a>
   </div>
-  <div class="nbox2">
+  <div class="nbox2 hidden md:flex sm:flex">
     <div class="searchbar">
       <div class="sitems"> <a href="/">Home</a></div>
       <div class="sitems"><a href="/listings">All Listings</a></div>
       <div class="sitems"><a href="/listings/new">Post new</a></div>
     </div>
   </div>
-  <div class="nbox3">
+  <div class="nbox3 hidden md:flex sm:flex">
     <%if(!currUser){%>
       <div id="menu" class=" flex items-center justify-start gap-2  rounded-lg p-4">
         <form action="/user/signUp" method="get">
@@ -34,136 +34,217 @@
                 class="px-6 py-3 border-solid border-gray-400 border-[0.1rem] rounded-lg text-xl font-bold text-gray-900"
                 value="Log Out">
             </form>
-            
             <a href="/user/Dashboard" class="p-[0.3rem] border-solid border-gray-400 border-[0.1rem] rounded-full">
-              <!-- <div class="user">
-                <i class="fa-solid fa-user"></i>
-              </div> -->
               <div class="relative w-14 h-14">
                 <% if (currUser.userImage && currUser.userImage.url) { %>
-                    <img src="<%= currUser.userImage.url %>" alt="Profile"
-                        class="rounded-full border-2 border-gray-300 object-cover object-center w-14 h-14">
-                    <% } else { %>
-                        <div
-                            class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center text-xl">
-                            <%=currUser.username.slice(0,1).toUpperCase() %>
-                        </div>
-                        <% } %>
-            </div>
+                  <img src="<%= currUser.userImage.url %>" alt="Profile"
+                    class="rounded-full border-2 border-gray-300 object-cover object-center w-14 h-14">
+                  <% } else { %>
+                    <div class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center text-xl">
+                      <%=currUser.username.slice(0,1).toUpperCase() %>
+                    </div>
+                    <% } %>
+              </div>
             </a>
           </div>
           <%}%>
-        
-
   </div>
+
+  <button id="menu-toggle" class="lg:hidden block p-2 text-gray-700 rounded-md focus:outline-none">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+    </svg>
+  </button>
 </div>
-<div class="nav-icons">
+
+<nav class="navbar bg-body-tertiary fixed-top sm:hidden md:hidden px-5">
+  <div class="container-fluid">
+    <div class="nbox1">
+      <a href="/listings">
+        <img src="/airbnb.png" alt="" />
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <div class="nbox1">
+          <a href="/listings">
+            <img src="/airbnb.png" alt="" />
+          </a>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/listings">Listings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/listings/new">Post new</a>
+          </li>
+          <li class="nav-item">
+
+            <div class="mt-3">
+              <%if(!currUser){%>
+                <div class=" flex items-center justify-start gap-2 rounded-lg ">
+                  <form action="/user/signUp" method="get">
+                    <input type="submit"
+                      class="px-6 py-3 border-solid border-gray-400 border-[0.1rem] rounded-lg text-xl font-bold text-gray-900"
+                      value="Sign Up">
+                  </form>
+                  <form action="/user/logIn" method="get">
+                    <input type="submit"
+                      class="px-6 py-3 border-solid border-gray-400 border-[0.1rem] rounded-lg text-xl font-bold text-gray-900"
+                      value="Log In">
+                  </form>
+                </div>
+                <%}%>
+
+                  <%if(currUser){%>
+                    <div class="flex items-start w-full justify-start gap-[0.6rem] flex-row">
+                      <a href="/user/Dashboard"
+                        class="p-[0.3rem] border-solid border-gray-400 border-[0.1rem] rounded-full">
+                        <div class="relative w-14 h-14">
+                          <% if (currUser.userImage && currUser.userImage.url) { %>
+                            <img src="<%= currUser.userImage.url %>" alt="Profile"
+                              class="rounded-full border-2 border-gray-300 object-cover object-center w-14 h-14">
+                            <% } else { %>
+                              <div
+                                class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center text-xl">
+                                <%=currUser.username.slice(0,1).toUpperCase() %>
+                              </div>
+                              <% } %>
+                        </div>
+                      </a>
+                      <form action="/user/logOut" method="get">
+                        <input type="submit"
+                          class="px-6 py-3 border-solid border-gray-400 border-[0.1rem] rounded-lg text-xl font-bold text-gray-900"
+                          value="Log Out">
+                      </form>
+                    </div>
+                    <%}%>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<div class="nav-icons mt-[8rem]  md:mt-0 sm:mt-0">
   <div class="icons">
     <a href="/listings/category/Homes" class="arctic">
-        <img src="https://a0.muscache.com/pictures/7630c83f-96a8-4232-9a10-0398661e2e6f.jpg" alt="">
-        <p>Homes</p>
+      <img src="https://a0.muscache.com/pictures/7630c83f-96a8-4232-9a10-0398661e2e6f.jpg" alt="">
+      <p>Homes</p>
     </a>
 
     <a href="/listings/category/Farms" class="arctic">
-        <img src="https://a0.muscache.com/pictures/aaa02c2d-9f0d-4c41-878a-68c12ec6c6bd.jpg" alt="">
-        <p>Farms</p>
+      <img src="https://a0.muscache.com/pictures/aaa02c2d-9f0d-4c41-878a-68c12ec6c6bd.jpg" alt="">
+      <p>Farms</p>
     </a>
 
     <a href="/listings/category/OMG!" class="arctic">
-        <img src="https://a0.muscache.com/pictures/c5a4f6fc-c92c-4ae8-87dd-57f1ff1b89a6.jpg" alt="">
-        <p>OMG!</p>
+      <img src="https://a0.muscache.com/pictures/c5a4f6fc-c92c-4ae8-87dd-57f1ff1b89a6.jpg" alt="">
+      <p>OMG!</p>
     </a>
 
     <a href="/listings/category/Domes" class="arctic">
-        <img src="https://a0.muscache.com/pictures/89faf9ae-bbbc-4bc4-aecd-cc15bf36cbca.jpg" alt="">
-        <p>Domes</p>
+      <img src="https://a0.muscache.com/pictures/89faf9ae-bbbc-4bc4-aecd-cc15bf36cbca.jpg" alt="">
+      <p>Domes</p>
     </a>
 
     <a href="/listings/category/Barns" class="arctic">
-        <img src="https://a0.muscache.com/pictures/f60700bc-8ab5-424c-912b-6ef17abc479a.jpg" alt="">
-        <p>Barns</p>
+      <img src="https://a0.muscache.com/pictures/f60700bc-8ab5-424c-912b-6ef17abc479a.jpg" alt="">
+      <p>Barns</p>
     </a>
 
     <a href="/listings/category/Caves" class="arctic">
-        <img src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg" alt="">
-        <p>Caves</p>
+      <img src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg" alt="">
+      <p>Caves</p>
     </a>
 
     <a href="/listings/category/Island" class="arctic">
-        <img src="https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg" alt="">
-        <p>Island</p>
+      <img src="https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg" alt="">
+      <p>Island</p>
     </a>
 
     <a href="/listings/category/Amazing views" class="arctic">
-        <img src="https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg" alt="">
-        <p>Amazing views</p>
+      <img src="https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg" alt="">
+      <p>Amazing views</p>
     </a>
 
     <a href="/listings/category/Bed & breakfasts" class="arctic">
-        <img src="https://a0.muscache.com/pictures/5ed8f7c7-2e1f-43a8-9a39-4edfc81a3325.jpg" alt="">
-        <p>Bed & breakfasts</p>
+      <img src="https://a0.muscache.com/pictures/5ed8f7c7-2e1f-43a8-9a39-4edfc81a3325.jpg" alt="">
+      <p>Bed & breakfasts</p>
     </a>
 
     <a href="/listings/category/National parks" class="arctic">
-        <img src="https://a0.muscache.com/pictures/c0a24c04-ce1f-490c-833f-987613930eca.jpg" alt="">
-        <p>National parks</p>
+      <img src="https://a0.muscache.com/pictures/c0a24c04-ce1f-490c-833f-987613930eca.jpg" alt="">
+      <p>National parks</p>
     </a>
 
     <a href="/listings/category/Lakefront" class="arctic">
-        <img src="https://a0.muscache.com/pictures/677a041d-7264-4c45-bb72-52bff21eb6e8.jpg" alt="">
-        <p>Lakefront</p>
+      <img src="https://a0.muscache.com/pictures/677a041d-7264-4c45-bb72-52bff21eb6e8.jpg" alt="">
+      <p>Lakefront</p>
     </a>
 
     <a href="/listings/category/Amazing pools" class="arctic">
-        <img src="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg" alt="">
-        <p>Amazing pools</p>
+      <img src="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg" alt="">
+      <p>Amazing pools</p>
     </a>
 
     <a href="/listings/category/Beachfront" class="arctic">
-        <img src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg" alt="">
-        <p>Beachfront</p>
+      <img src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg" alt="">
+      <p>Beachfront</p>
     </a>
 
     <a href="/listings/category/Chef kitchen's" class="arctic">
-        <img src="https://a0.muscache.com/pictures/ddd13204-a5ae-4532-898c-2e595b1bb15f.jpg" alt="">
-        <p>Chef kitchen's</p>
+      <img src="https://a0.muscache.com/pictures/ddd13204-a5ae-4532-898c-2e595b1bb15f.jpg" alt="">
+      <p>Chef kitchen's</p>
     </a>
 
     <a href="/listings/category/Camping" class="arctic">
-        <img src="https://a0.muscache.com/pictures/ca25c7f3-0d1f-432b-9efa-b9f5dc6d8770.jpg" alt="">
-        <p>Camping</p>
+      <img src="https://a0.muscache.com/pictures/ca25c7f3-0d1f-432b-9efa-b9f5dc6d8770.jpg" alt="">
+      <p>Camping</p>
     </a>
 
     <a href="/listings/category/Treehouses" class="arctic">
-        <img src="https://a0.muscache.com/pictures/4d4a4eba-c7e4-43eb-9ce2-95e1d200d10e.jpg" alt="">
-        <p>Treehouses</p>
+      <img src="https://a0.muscache.com/pictures/4d4a4eba-c7e4-43eb-9ce2-95e1d200d10e.jpg" alt="">
+      <p>Treehouses</p>
     </a>
 
     <a href="/listings/category/Top of the world" class="arctic">
-        <img src="https://a0.muscache.com/pictures/248f85bf-e35e-4dc3-a9a1-e1dbff9a3db4.jpg" alt="">
-        <p>Top of the world</p>
+      <img src="https://a0.muscache.com/pictures/248f85bf-e35e-4dc3-a9a1-e1dbff9a3db4.jpg" alt="">
+      <p>Top of the world</p>
     </a>
 
     <a href="/listings/category/Cabins" class="arctic">
-        <img src="https://a0.muscache.com/pictures/732edad8-3ae0-49a8-a451-29a8010dcc0c.jpg" alt="">
-        <p>Cabins</p>
+      <img src="https://a0.muscache.com/pictures/732edad8-3ae0-49a8-a451-29a8010dcc0c.jpg" alt="">
+      <p>Cabins</p>
     </a>
 
     <a href="/listings/category/Historical homes" class="arctic">
-        <img src="https://a0.muscache.com/pictures/33dd714a-7b4a-4654-aaf0-f58ea887a688.jpg" alt="">
-        <p>Historical homes</p>
+      <img src="https://a0.muscache.com/pictures/33dd714a-7b4a-4654-aaf0-f58ea887a688.jpg" alt="">
+      <p>Historical homes</p>
     </a>
 
     <a href="/listings/category/Trending" class="arctic">
-        <img src="https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg" alt="">
-        <p>Trending</p>
+      <img src="https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg" alt="">
+      <p>Trending</p>
     </a>
 
     <a href="/listings/category/Houseboats" class="arctic">
-        <img src="https://a0.muscache.com/pictures/c027ff1a-b89c-4331-ae04-f8dee1cdc287.jpg" alt="">
-        <p>Houseboats</p>
+      <img src="https://a0.muscache.com/pictures/c027ff1a-b89c-4331-ae04-f8dee1cdc287.jpg" alt="">
+      <p>Houseboats</p>
     </a>
-</div>
+  </div>
 
 
   <div class="right">
@@ -182,7 +263,6 @@
           <span class="toggle-ball"></span>
         </label>
       </div>
-
     </div>
   </div>
 
@@ -190,35 +270,8 @@
 
 
 <script>
-  const checkbox = document.querySelector("#checkbox");
-
-  checkbox.addEventListener("click", async () => {
-    try {
-      const response = await fetch(`/update-tax-all`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ tax: checkbox.checked }),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        alert(`Tax updated for all listings to: ${result.tax}`);
-      } else {
-        alert("Failed to update tax for all listings!");
-      }
-    } catch (error) {
-      console.error("Error updating tax for all listings:", error);
-    }
+  document.getElementById("menu-toggle").addEventListener("click", () => {
+    const menu = document.getElementById("menu");
+    menu.classList.toggle("hidden");
   });
 </script>
-
-
-
-
-
-
-
-

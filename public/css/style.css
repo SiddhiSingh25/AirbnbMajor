@@ -532,13 +532,20 @@ footer{
         border: 0;
     }
     .nbox1{
-        display: none;
+        height: 6rem;
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
     }
-    .nbox2{
+    /* .nbox2{
+       display: none;
+    } */
+    /* .nbox3{
         display: none;
-    }
-    .nbox3{
-        display: none;
+    } */
+    .nbox1 img {
+        margin-left: 0;
     }
     .nbox4{
         display: flex;
@@ -625,7 +632,7 @@ footer{
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0  0  0 2.4rem ;
+        padding: 0  0  0 2rem ;
         border-bottom: .1rem solid #e8e5e5;
         box-shadow:-3px 11px 5px 4px rgb(232 232 232 / 30%);  
 }

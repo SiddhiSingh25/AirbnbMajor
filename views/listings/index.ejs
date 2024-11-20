@@ -3,7 +3,7 @@
 <body>
     <div class="place-section flex gap-x-5 gap-y-16 px-8 md:px-32 sm:px-32 pb-10 items-center md:justify-start justify-center">
         <% data.forEach((elm) => { %>
-        <div class="w-[35rem] md:w-[32.5rem] gap-2 md:h-[40rem] h-[42rem] p-3 rounded-xl shadow-md transition-transform transform hover:scale-[1.009] hover:shadow-lg hover:bg-gray-50 relative flex items-center justify-between flex-col">
+        <div class="w-[35rem] md:w-[32rem] gap-2 md:h-[40rem] h-[42rem] p-3 rounded-xl shadow-md transition-transform transform hover:scale-[1.009] hover:shadow-lg hover:bg-gray-50 relative flex items-center justify-between flex-col">
           <div class="w-full h-[80%] ">
             <a href="/listings/<%= elm._id %>">
                 <img src="<%= elm.image.url %>" class=" relative rounded-xl hover:bg-gray-400 hover:opacity-[0.9] h-full  object-cover object-center w-full" />

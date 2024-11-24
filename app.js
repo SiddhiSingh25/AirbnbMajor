@@ -68,9 +68,7 @@ async function main() {
 }
 
 
-// async function main() {
-//     await mongoose.connect("mongodb://localhost:27017/Wanderlust");
-// }
+
 
 
 app.set("view engine", "ejs")
@@ -98,34 +96,10 @@ app.use((req, res, next) => {
 })
 
 
-// app.use((req, res, next) => {
-//     if (req.isAuthenticated()) {
-//         res.locals.currUser = req.user;  
-//     } else {
-//         res.locals.currUser = null;  
-//     }
-//     next();
-// });
 
  app.get("/",(req,res)=>{
     res.render("./listings/hero.ejs")
  })
-
- app.patch("/update-tax-all", async (req, res) => {
-    const { tax } = req.body;
-    try {
-      const updatedListings = await Listing.updateMany({}, { tax });
-  
-      res.json({
-        message: "Tax value updated for all listings",
-        tax,
-        modifiedCount: updatedListings.modifiedCount,
-      });
-    } catch (error) {
-      console.error("Error updating tax for all listings:", error);
-      res.status(500).json({ message: "Internal server error!" });
-    }
-  });
   
 
 app.use("/listings", listingRoute)

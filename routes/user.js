@@ -3,7 +3,7 @@ const wrapAsync = require("../Utils/wrapAsync.js");
 const userRoute = express.Router();
 
 let passport = require("passport");
-const { storeUrl, loggedIn } = require("../middleware.js");
+const { storeUrl, loggedIn } = require("../middlewareBuilt.js");
 let UserController = require("../Controllers/UserController.js");
 const User = require("../Models/User.js");
 

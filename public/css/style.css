@@ -544,6 +544,7 @@ footer{
     } */
     .nbox1 img {
         margin-left: 0;
+        height: 11rem;
     }
     .nbox4{
         display: flex;
@@ -630,7 +631,7 @@ footer{
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0  0  0 2cqhrem ;
+        padding: 0  0  0 2rem;
         border-bottom: .1rem solid #e8e5e5;
         box-shadow:-3px 11px 5px 4px rgb(232 232 232 / 30%);  
 }

@@ -1,7 +1,7 @@
 const express = require("express");
 const listingRoute = express.Router();
 const wrapAsync = require("../Utils/wrapAsync.js");
-let { loggedIn, isOwner, validateSchema } = require("../middleware.js")
+let { loggedIn, isOwner, validateSchema } = require("../middlewareBuilt.js")
 let ListingController = require("../Controllers/ListingController.js")
 const multer = require('multer')
 const { storage } = require("../Cloudinary.js");

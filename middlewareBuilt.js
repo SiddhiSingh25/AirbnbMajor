@@ -1,4 +1,4 @@
-let Listing = require("./Models/Listing");
+let Listing = require("./Models/Listing.js");
 const Review = require("./Models/Reviews.js");
 const {listingSchema , reviewSchema} = require("./schema.js")
 const ExpressError = require('./Utils/ExpressError.js');
